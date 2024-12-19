@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "../firebase/firebaseConfig"; // Firebase configuration
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../firebase/firebaseConfig";
+import "../styles/settings.css";
 
 const Settings = () => {
   const [user, setUser] = useState({
@@ -11,31 +13,44 @@ const Settings = () => {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [userId, setUserId] = useState(null);
 
-  const userId = "user-id"; // Replace with auth state or context
-
-  // Fetch user details from Firestore
+  // Fetch the logged-in user's ID and set the Firestore data
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const userDoc = await getDoc(doc(db, "users", userId));
-        if (userDoc.exists()) {
-          setUser(userDoc.data());
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        setUserId(currentUser.uid);
+        setUser((prev) => ({
+          ...prev,
+          email: currentUser.email, // Set email from the auth object
+        }));
 
-    fetchUser();
-  }, [userId]);
+        try {
+          // Fetch user details from Firestore
+          const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+          if (userDoc.exists()) {
+            setUser(userDoc.data());
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup subscription on unmount
+  }, []);
 
   // Handle form submission
   const handleUpdate = async (e) => {
     e.preventDefault();
+    if (!userId) return;
+
     setLoading(true);
     try {
-      await updateDoc(doc(db, "users", userId), user);
+      await updateDoc(doc(db, "users", userId), {
+        name: user.name,
+        gender: user.gender,
+      });
       setMessage("Profile updated successfully!");
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -55,25 +70,31 @@ const Settings = () => {
   };
 
   return (
-    <div className="settings-page">
-      <h2>Settings</h2>
-      <form onSubmit={handleUpdate}>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
+    <div className="container settings-page">
+      <h2 className="text-center mb-4">Settings</h2>
+      <form onSubmit={handleUpdate} className="p-4 rounded shadow">
+        <div className="form-group mb-3">
+          <label htmlFor="name" className="form-label">
+            Name:
+          </label>
           <input
             type="text"
             id="name"
             name="name"
+            className="form-control"
             value={user.name}
             onChange={handleChange}
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="gender">Gender:</label>
+        <div className="form-group mb-3">
+          <label htmlFor="gender" className="form-label">
+            Gender:
+          </label>
           <select
             id="gender"
             name="gender"
+            className="form-select"
             value={user.gender}
             onChange={handleChange}
             required
@@ -84,21 +105,36 @@ const Settings = () => {
             <option value="Other">Other</option>
           </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email (Read Only):</label>
+        <div className="form-group mb-3">
+          <label htmlFor="email" className="form-label">
+            Email (Read Only):
+          </label>
           <input
             type="email"
             id="email"
             name="email"
+            className="form-control"
             value={user.email}
             readOnly
           />
         </div>
-        <button type="submit" disabled={loading}>
+        <button
+          type="submit"
+          className="btn btn-primary w-100"
+          disabled={loading || !userId}
+        >
           {loading ? "Updating..." : "Save Changes"}
         </button>
       </form>
-      {message && <p className="message">{message}</p>}
+      {message && (
+        <p
+          className={`mt-3 text-center ${
+            message.includes("successfully") ? "text-success" : "text-danger"
+          }`}
+        >
+          {message}
+        </p>
+      )}
     </div>
   );
 };

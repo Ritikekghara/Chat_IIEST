@@ -1,18 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
-import Login from './pages/Login';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./styles/app.css";
+import Login from "./pages/Login";
+import Setting from "./pages/Setting";
 
 const App = () => {
   return (
-    <>
     <Router>
-    <Routes>
-      <Route path='/' element={<Login />} />
-    </Routes>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<Login />} />
+        </Routes>
+        <Routes>
+          <Route path="/setting" element={<Setting />} />
+        </Routes>
+      </div>
     </Router>
-    
-    </>
   );
-}
+};
 
 export default App;

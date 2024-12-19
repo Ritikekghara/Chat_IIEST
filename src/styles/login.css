@@ -1,0 +1,35 @@
+body {
+  background: linear-gradient(135deg, rgb(229, 217, 242), rgb(205, 193, 255));
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  background-color: rgb(229, 217, 242);
+  border: 1px solid rgb(205, 193, 255);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+  color: rgb(162, 148, 249);
+}
+
+.login-container label {
+  color: rgb(162, 148, 249);
+}
+
+.login-container input {
+  background-color: rgb(229, 217, 242);
+  border-color: rgb(205, 193, 255);
+}
+
+.login-container button {
+  background-color: rgb(162, 148, 249);
+  color: white;
+}
+
+.login-container button:hover {
+  background-color: rgb(205, 193, 255);
+}
