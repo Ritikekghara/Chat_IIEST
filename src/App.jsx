@@ -10,8 +10,6 @@ const App = () => {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Login />} />
-        </Routes>
-        <Routes>
           <Route path="/setting" element={<Setting />} />
         </Routes>
       </div>

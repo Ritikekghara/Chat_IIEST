@@ -6,6 +6,7 @@ import {
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import "../styles/Login.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [currState, setCurrState] = useState("signup");
@@ -18,6 +19,8 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
+
+  const navigate = useNavigate(); 
   // Handle input change
   const handleFormChange = (e) => {
     const { name, value } = e.target;
@@ -83,7 +86,9 @@ export default function Login() {
       } finally {
         setLoading(false);
       }
+
     }
+    navigate("/setting");
   };
 
   return (
