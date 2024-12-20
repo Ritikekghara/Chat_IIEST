@@ -3,6 +3,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../firebase/firebaseConfig";
 import "../styles/settings.css";
+import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
   const [user, setUser] = useState({
@@ -14,6 +15,7 @@ const Settings = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [userId, setUserId] = useState(null);
+  const navigate = useNavigate();
 
   // Fetch the logged-in user's ID and set the Firestore data
   useEffect(() => {
@@ -120,6 +122,7 @@ const Settings = () => {
         </div>
         <button
           type="submit"
+          onClick={() => navigate("/Sidebar")}
           className="btn btn-primary w-100"
           disabled={loading || !userId}
         >
