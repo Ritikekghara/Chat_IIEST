@@ -9,13 +9,11 @@ function App() {
   return (
     <Router>
       <div style={{ display: "flex" }}>
-        {/* Sidebar */}
         <Sidebar />
 
-        {/* Main Content */}
         <div style={{ marginLeft: "250px", width: "100%", padding: "20px" }}>
           <Routes>
-            {/* <Route path="/home" element={<chatWindow />} /> */}
+            {/* <Route path="/home" element={<ChatWindow />} /> */}
             <Route path="/setting" element={<Settings />} />
             <Route path="/login" element={<Login />} />
           </Routes>
