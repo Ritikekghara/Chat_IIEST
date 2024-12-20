@@ -1,0 +1,61 @@
+/* Sidebar styles */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(229, 217, 242); 
+  width: 60px; 
+  height: 100vh;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.sidebar:hover {
+  width: 200px; 
+}
+
+.sidebar-button {
+  background: none;
+  border: none;
+  color: rgb(162, 148, 249); 
+  font-size: 1.2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-button:hover {
+  background-color: rgb(205, 193, 255); 
+  color: white;
+}
+
+.icon {
+  margin-right: 0; 
+  transition: margin 0.3s ease;
+}
+
+.sidebar:hover .icon {
+  margin-right: 10px;
+}
+
+.sidebar-text {
+  font-size: 1rem;
+  margin-left: 10px;
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .sidebar-text {
+  opacity: 1;
+}

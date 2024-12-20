@@ -1,22 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./styles/app.css";
-import Login from "./pages/Login";
-import Setting from "./pages/Setting";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
+// import Home from "./pages/Home";
+import Settings from "./pages/Settings";
+import Login from "./pages/Login";
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <div className="app-container">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/setting" element={<Setting />} />
-          <Route path="/Sidebar" element={<Sidebar />} />
-        </Routes>
+      <div style={{ display: "flex" }}>
+        {/* Sidebar */}
+        <Sidebar />
+
+        {/* Main Content */}
+        <div style={{ marginLeft: "250px", width: "100%", padding: "20px" }}>
+          <Routes>
+            {/* <Route path="/home" element={<chatWindow />} /> */}
+            <Route path="/setting" element={<Settings />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
-};
+}
 
 export default App;

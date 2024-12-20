@@ -17,18 +17,16 @@ const Settings = () => {
   const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
 
-  // Fetch the logged-in user's ID and set the Firestore data
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         setUserId(currentUser.uid);
         setUser((prev) => ({
           ...prev,
-          email: currentUser.email, // Set email from the auth object
+          email: currentUser.email, 
         }));
 
         try {
-          // Fetch user details from Firestore
           const userDoc = await getDoc(doc(db, "users", currentUser.uid));
           if (userDoc.exists()) {
             setUser(userDoc.data());
@@ -36,13 +34,14 @@ const Settings = () => {
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
+      } else {
+        navigate("/login");
       }
     });
 
-    return () => unsubscribe(); // Cleanup subscription on unmount
-  }, []);
+    return () => unsubscribe();
+  }, [navigate]);
 
-  // Handle form submission
   const handleUpdate = async (e) => {
     e.preventDefault();
     if (!userId) return;
@@ -122,7 +121,6 @@ const Settings = () => {
         </div>
         <button
           type="submit"
-          onClick={() => navigate("/Sidebar")}
           className="btn btn-primary w-100"
           disabled={loading || !userId}
         >
