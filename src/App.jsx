@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 // import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
+import ChatWindow from "./pages/ChatWindow";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
 
         <div style={{ marginLeft: "250px", width: "100%", padding: "20px" }}>
           <Routes>
-            {/* <Route path="/home" element={<ChatWindow />} /> */}
+            <Route path="/home" element={<ChatWindow />} />
             <Route path="/setting" element={<Settings />} />
             <Route path="/login" element={<Login />} />
           </Routes>
