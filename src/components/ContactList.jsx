@@ -10,7 +10,7 @@ const ContactList = ({ onSelectContact }) => {
         id: 1,
         name: "Arunava",
         lastMessage: "Hey there!",
-        avatar: "https://via.placeholder.com/40",
+        avatar: "https://media.licdn.com/dms/image/v2/D5603AQHNj1-HhUVVyQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1711452151626?e=1740614400&v=beta&t=62RuYp_py6RmZ-wj2NDDvG-v4s8GEuHaSGWXoiIDP0M",
       },
       {
         id: 2,
