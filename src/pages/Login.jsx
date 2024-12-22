@@ -98,7 +98,7 @@ export default function Login() {
         style={{ maxWidth: "400px" }}
         onSubmit={handleSubmit}
       >
-        <h1 className="text-center mb-4">
+        <h1 className="text-center mb-4 login-title">
           {currState === "signup" ? "Sign Up" : "Login"}
         </h1>
 

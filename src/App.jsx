@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./styles/app.css";
 import Sidebar from "./components/Sidebar";
 // import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
-import ChatWindow from "./pages/ChatWindow";
+import ChatWindow from "./pages/Home";
 
 function App() {
   return (

@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(229, 217, 242); 
+  background-color: rgb(255, 255, 255); 
   width: 60px; 
   height: 100vh;
   transition: width 0.3s ease;
@@ -11,7 +11,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 5px #0000001a;
   z-index: 1000;
 }
 
@@ -22,7 +22,7 @@
 .sidebar-button {
   background: none;
   border: none;
-  color: rgb(162, 148, 249); 
+  color: #200E3A; 
   font-size: 1.2rem;
   width: 100%;
   display: flex;
@@ -34,7 +34,8 @@
 }
 
 .sidebar-button:hover {
-  background-color: rgb(205, 193, 255); 
+  border: none;
+  background-color: rgb(56, 65, 157); 
   color: white;
 }
 

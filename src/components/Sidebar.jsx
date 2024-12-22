@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Sidebar.css"; // Custom CSS for styling
+import "../styles/Sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -16,13 +16,11 @@ function Sidebar() {
 
   const auth = getAuth();
 
-  // Monitor Firebase authentication state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsLoggedIn(!!user);
     });
 
-    // Cleanup the listener on component unmount
     return () => unsubscribe();
   }, [auth]);
 

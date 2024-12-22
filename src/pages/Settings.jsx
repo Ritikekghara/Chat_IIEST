@@ -23,7 +23,7 @@ const Settings = () => {
         setUserId(currentUser.uid);
         setUser((prev) => ({
           ...prev,
-          email: currentUser.email, 
+          email: currentUser.email,
         }));
 
         try {
@@ -72,8 +72,8 @@ const Settings = () => {
 
   return (
     <div className="container settings-page">
-      <h2 className="text-center mb-4">Settings</h2>
       <form onSubmit={handleUpdate} className="p-4 rounded shadow">
+        <h1 className="text-center mb-4">Settings</h1>
         <div className="form-group mb-3">
           <label htmlFor="name" className="form-label">
             Name:
