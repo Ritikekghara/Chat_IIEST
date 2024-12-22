@@ -6,8 +6,9 @@ const Home = () => {
   const [selectedContact, setSelectedContact] = useState(null);
 
   return (
-    <div className="home-page flex h-screen">
+    <div className="flex flex-col w-full h-full">
       <ContactList onSelectContact={setSelectedContact} />
+      <ChatWindow contact={selectedContact} />
     </div>
   );
 };

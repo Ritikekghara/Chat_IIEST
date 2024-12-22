@@ -10,10 +10,10 @@ import ChatWindow from "./pages/Home";
 function App() {
   return (
     <Router>
-      <div style={{ display: "flex" }}>
+      <div className="app">
         <Sidebar />
 
-        <div style={{ marginLeft: "250px", width: "100%", padding: "20px" }}>
+        <div>
           <Routes>
             <Route path="/home" element={<ChatWindow />} />
             <Route path="/setting" element={<Settings />} />
