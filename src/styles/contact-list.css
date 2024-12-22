@@ -1,29 +1,45 @@
 .contact-list {
-    height: 100%;
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #ffffff;
-    border-right: 1px solid #ffffff;
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 50px;
+    padding-top: 2rem;
+    overflow-y: auto; /* Allow scrolling if content overflows vertically */
   }
   
   .contact-list h2 {
-    margin-bottom: 1rem;
-    color: #200E3A;
     font-size: 1.5rem;
+    font-weight: 600;
+    color: #200e3a;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-list p {
+    color: #200e3a;
   }
   
   .contact-item {
     display: flex;
     align-items: center;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
-    border-radius: 8px;
-    background-color: white;
-    transition: background-color 0.3s;
+    width: 350px;
+    background-color: #ffffff;
+    margin-left: 25px;
     cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #200e3a;
   }
   
   .contact-item:hover {
-    background-color: #edf2f7;
+    background-color: #38419d;
+  }
+  
+  .contact-item:hover p {
+    color: #ffffff;
   }
   
   .contact-avatar {
@@ -31,6 +47,7 @@
     height: 40px;
     border-radius: 50%;
     margin-right: 1rem;
+    object-fit: cover;
   }
   
   .contact-details {
@@ -41,11 +58,11 @@
   .contact-name {
     font-size: 1rem;
     font-weight: 600;
-    color: #2d3748;
+    color: #200e3a;
   }
   
   .contact-last-message {
     font-size: 0.875rem;
-    color: #718096;
+    color: #38419d;
   }
   
