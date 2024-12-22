@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "../styles/contact-list.css";
 
 const ContactList = ({ onSelectContact }) => {
   const [contacts, setContacts] = useState([]);
 
-  // Simulated contact data (replace with Firebase or API fetching logic)
   useEffect(() => {
-    const mockContacts = [
-      { id: 1, name: "John Doe", lastMessage: "Hey there!", avatar: "https://via.placeholder.com/40" },
-      { id: 2, name: "Jane Smith", lastMessage: "See you tomorrow!", avatar: "https://via.placeholder.com/40" },
+    const Contacts = [
+      { id: 1, name: "Arunava", lastMessage: "Hey there!", avatar: "https://via.placeholder.com/40" },
+      { id: 2, name: "Rtik", lastMessage: "See you tomorrow!", avatar: "https://via.placeholder.com/40" },
       { id: 3, name: "Alex Johnson", lastMessage: "Got it, thanks!", avatar: "https://via.placeholder.com/40" },
     ];
-    setContacts(mockContacts);
+    setContacts(Contacts);
   }, []);
 
   return (
     <div className="contact-list h-full p-4 border-r bg-gray-50">
-      <h2 className="text-blue-500 text-2xl mb-4">Recent Chats</h2>
+      <h2 className="text-blue-500 text-2xl mb-4">Messages</h2>
       <div>
         {contacts.map((contact) => (
           <div

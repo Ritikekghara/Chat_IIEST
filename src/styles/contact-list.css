@@ -1,13 +1,13 @@
 .contact-list {
     height: 100%;
     padding: 1rem;
-    background-color: #f7fafc;
-    border-right: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    border-right: 1px solid #ffffff;
   }
   
   .contact-list h2 {
     margin-bottom: 1rem;
-    color: #2b6cb0;
+    color: #200E3A;
     font-size: 1.5rem;
   }
   
